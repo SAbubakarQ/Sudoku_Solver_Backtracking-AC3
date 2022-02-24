@@ -34,7 +34,10 @@ def menuOption(board):
         if (choice == 'A' or choice == 'a'):
             print("\n--Backtracking + Forward Checking--\n")
             # Begin Backtracking/Forward Checking algorthim
-            forward_checking.Backtracking_Search(board)
+            try:
+                forward_checking.Backtracking_Search(board)
+            except:
+                print("Error...Try Again\n")
             print("Solution for Test Case:\n")
             print("solution_S:\n")
             printBoard(board)
@@ -44,14 +47,16 @@ def menuOption(board):
         elif (choice == 'B' or choice == 'b'):
             print("\n--Arc Consistency--\n")
             # Begin Arc Consistency Algorithm
-            AC3.AC3(board)
+            try:
+                AC3.AC3(board)
+            except:
+                print("Error...Issue with AC3 Algorithm\n")
             print("How would you like to continue?\n A - Backtracking + Forward Checking\n B - Arc Consistency\n X - Next Test Case\n")
             choice = input("Choice: ")
 
         else:
             print("\nMoving to Next Test ->")
             break
-
 
 #============================_Backtracking/Forward Checking_===================================#
 
@@ -99,8 +104,8 @@ def validity(board, number, pos):
 
 #==================================_Arc Consistency 3_=========================================#
 
-# Revise Function pertaining to Arc Consistency
-def revise(board, Xi, Xj):
+# # Revise Function pertaining to Arc Consistency
+def revise(board, x, y):
     """
     Creating variable x arc consistent with y.
     If value removed, returns True
@@ -108,14 +113,25 @@ def revise(board, Xi, Xj):
 
     revised = False 
 
-    # Obtaining x and y domains
-    find = find_empty(board)
+    # Obtaining Domains from Board
+    x_domain = board[x]
+    y_domain = board[y]
 
-    if not find: 
-        return True
-    else: 
-        row, col = find
+    # Geting all arc constraints with use of validity from
+    # Backracking algorithm
+    allConstraints = [
+        constraint for constraint in board if constraint[0] == x and constraint[1] == y
+    ]
+    
+    for x_value in x_domain:
+        satisfies = False
+        for y_value in y_domain:
+            for constraint in allConstraints:
+                constraint_func = board[constraint]
+                if constraint_func(x_value, y_value):
+                    satisfies = True
+        if not satisfies:
+            x.domain.remove(x_value)
+            revised = True
 
-    # # Loop through values
-    # for i in range(1, 10):
-    #     if validity(board, i, (row, col)):
+    return revised
