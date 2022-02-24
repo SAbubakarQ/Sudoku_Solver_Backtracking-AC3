@@ -1,5 +1,5 @@
-# Sudoku Solver: Using Backtracking and Arc Consistency - 3 Algorithms 
-# Welcome to Sudoku Solver! Written by: Sahibzada Abubakar Bin Qasim 
+ # Welcome to Sudoku Solver! Written by: Sahibzada Abubakar Bin Qasim 
+ ## Sudoku Solver: Using Backtracking and Arc Consistency - 3 Algorithms
 
 To compile all the files:
     1. type 'python3 Sudoku_solver.py' into the terminal
