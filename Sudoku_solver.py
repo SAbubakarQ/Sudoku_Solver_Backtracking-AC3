@@ -10,10 +10,13 @@ from forward_checking import Backtracking_Search
 """ 
 CSCE 4613 - Artifical Intelligence Homework 1
 This is problem 4 - Programming Sudoku Solver with CSP. 
+
 Code written by Abubakar Qasim - 010778021.
 Test Cases provided by Dr. Thi Hoang Ngan Le.
 Backtracking Algorithm walkthrough provided by TechWithTim
 AC3 Algorithm referenced from medium.com (Cesar William Alvarenga)
+GitHub reference repository: 
+https://github.com/aimacode/aima-python/blob/61d695b37c6895902081da1f37baf645b0d2658a/csp.py#L191
 """
 #======================================================================= Test Case 1 =======================================================================#
 print("\n--------_Test Case 1_---------")
